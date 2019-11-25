@@ -1,0 +1,86 @@
+page{
+  background: #fff;
+}
+.box-pa {
+  padding:0 30rpx;
+}
+.user-img-box{
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  margin: 70rpx 0;
+}
+.user-img-box image{
+  width: 200rpx;
+  height: 200rpx;
+  display: flex;
+  border-radius: 50%;
+}
+.input-box{
+  color: #999;
+  font-size: 28rpx;
+  border-bottom: 1px solid #f2f2f2;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 20rpx;
+}
+.button-class{
+  border: none;
+  margin-top: 80rpx;
+  background-color: #58a6f8;
+  color: #fff;
+  border-radius: 40px;
+}
+.or-text{
+  color: #ff8500;
+  margin-left: 10rpx;
+}
+.tip-text{
+  margin-top: 30rpx;
+  text-align: center;
+  color: #999;
+  font-size: 24rpx;
+}
+.get-code{
+  color: #ff8500;
+  background-color: #f2f2f2;
+  font-size: 24rpx;
+  border-radius: 30px;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 10rpx 20rpx;
+}
+.img-code{
+  width: 200rpx;
+  height: 50rpx;
+}
+.get-imagecode{
+  color: #ff8500;
+  font-size: 24rpx;
+}
+.input-outer{
+  align-items: center;
+  display: flex;
+}
+.input-outer .input-box{
+  flex-grow:2;
+  align-items: center;
+}
+.code-input{
+  width: 300rpx;
+}
+.succ-box{
+  display:flex;
+  align-items:center;
+  margin-top:30rpx;
+}
+.icon-box{
+  margin-right: 10rpx;
+}
+.icon-box{
+  margin-right: 10rpx;
+}
+.code-input{
+
+}

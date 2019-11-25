@@ -1,0 +1,16 @@
+<view class="user-top box-pa">
+  <form bindsubmit="onLogin" report-submit="true">
+    <view class='user-img-box'>
+      <image class='user-img' src='../../images/userico.png'></image>
+    </view>
+    <input class="input-box" type='text' placeholder="请输入用户名" value='{{phoneValue}}' bindinput='bindPhoneValue'></input>
+    <view class='input-outer betweenplace'>
+      <input class="input-box" type='pasword' placeholder="输入密码" bindblur='getPhonemessage' value='{{checkCode}}' bindinput='bindCheckCode'></input>
+    </view>
+    <view class='input-outer betweenplace'>
+      <input class="input-box code-input" type='text' placeholder="请输入验证码" value='{{valiDateCode}}' bindinput='bindValiDateCode'></input>
+      <image class='img-code get-imagecode' bindtap='getimageCode' src='{{imgCode}}'></image>
+    </view>
+    <button form-type="submit" class='button-class'>登陆</button>
+  </form>
+</view>

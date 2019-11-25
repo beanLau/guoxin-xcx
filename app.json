@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/authorize/authorize",
+    "pages/bindPhone/bindPhone",
+    "pages/logs/logs",
+    "pages/reportSearch/reportSearch",
+    "pages/reportDetail/reportDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2F7AF1",
+    "navigationBarTitleText": "中国商业联合会",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,91 @@
+.no-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100rpx;
+}
+
+.no-data-pic {
+  width: 200rpx;
+  height: 200rpx;
+  margin-left: 30rpx;
+}
+
+.no-data-title {
+  color: #999;
+  margin-top: 40rpx;
+  text-align: center;
+}
+
+.top-pic {
+  width: 100%;
+  height: 400rpx;
+}
+.zmz-pic{
+  width: 100%;
+  height: 300rpx;
+}
+.page-content{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f1f1f1;
+  overflow: auto;
+}
+.detail-content{
+  padding: 20rpx;
+}
+.container-wrap {
+  width: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+.item-li {
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  margin-top: 22rpx;
+}
+.item-group{
+  display: flex;
+  font-size: 24rpx;
+  border-bottom: 1px solid #f1f1f1;
+}
+.item-li .item-title {
+  width: 100%;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #2F7AF1;
+}
+.group-title{
+  width: 160rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1px dashed #f1f1f1;
+}
+.item-value{
+  flex-grow: 1;
+}
+
+.item-li .item-content {
+  box-sizing: border-box;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.item-li .item-content text {
+  color: #4e4e4e;
+  font-size: 26rpx;
+}
+
+.item-li .item-title text {
+  color: #000;
+  line-height: 100rpx;
+  font-size: 28rpx;
+}

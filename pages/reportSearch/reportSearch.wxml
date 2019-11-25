@@ -1,0 +1,4 @@
+<view class="page-content">
+  <input value="{{searchValue}}" class="search-input" confirm-type="search" placeholder="请输入样品编号" bindinput="bindSearchValue"></input>
+  <view class="search-btn" bindtap="searchCb">查询</view>
+</view>

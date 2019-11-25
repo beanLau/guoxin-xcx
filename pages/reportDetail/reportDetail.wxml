@@ -1,0 +1,224 @@
+<view class="page-content">
+  <image class="top-pic" src="/images/logo.png"></image>
+  <view wx:if="{{reportDetail}}" class="detail-content">
+    <image class="zmz-pic" src="{{reportDetail.detail.zmz}}"> </image>
+    <view class='container'>
+      <view class='container-wrap'>
+        <view class='item-li'>
+          <view class='item-title' data-index="0" bindtap='showHide'>
+            样品概况
+          </view>
+          <view class='item-content' wx:if="{{active == 0}}">
+            <view class="item-group">
+              <view class="group-title">样品编号:</view>
+              <view class="item-value">{{reportDetail.detail.sampleCode}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">鉴定日期:</view>
+              <view class="item-value">{{reportDetail.detail.checkDate}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">品牌名称:</view>
+              <view class="item-value">{{reportDetail.detail.sampleBrand}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表壳材质:</view>
+              <view class="item-value">{{reportDetail.detail.bkeTexture}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表带材质:</view>
+              <view class="item-value">{{reportDetail.detail.bdTexture}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表扣材质:</view>
+              <view class="item-value">{{reportDetail.detail.bkTexture}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">使用可靠性:</view>
+              <view class="item-value">{{reportDetail.detail.xingneng}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">外观成新度:</view>
+              <view class="item-value">{{reportDetail.detail.newLev}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">结论:</view>
+              <view class="item-value">结论</view>
+            </view>
+          </view>
+        </view>
+        <view class='item-li'>
+          <view class='item-title' data-index="1" bindtap='showHide'>
+            测试参数
+          </view>
+          <view class='item-content' wx:if="{{active == 1}}">
+            <view class="item-group">
+              <view class="group-title">瞬时日差（s/d）:</view>
+              <view class="item-value">{{reportDetail.detail.ssrc}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">摆幅（°）:</view>
+              <view class="item-value">{{reportDetail.detail.jxBf}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">振频:</view>
+              <view class="item-value">{{reportDetail.detail.jxZp}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">机芯宝石数:</view>
+              <view class="item-value">{{reportDetail.detail.jxBss}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='item-li'>
+          <view class='item-title' data-index="2" bindtap='showHide'>
+            技术信息
+          </view>
+          <view class='item-content' wx:if="{{active == 2}}">
+            <view class="item-group">
+              <view class="group-title">针数:</view>
+              <view class="item-value">{{reportDetail.detail.zhenNum}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表壳号:</view>
+              <view class="item-value">{{reportDetail.detail.bkeCode}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表壳序号:</view>
+              <view class="item-value">{{reportDetail.detail.bkeOrder}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表盖号:</view>
+              <view class="item-value">{{reportDetail.detail.bkeCovercode}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表带号:</view>
+              <view class="item-value">{{reportDetail.detail.bdCode}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表扣号:</view>
+              <view class="item-value">{{reportDetail.detail.bkCode}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">机芯类型:</view>
+              <view class="item-value">{{reportDetail.detail.jxType}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">机芯型号:</view>
+              <view class="item-value">{{reportDetail.detail.jxStyle}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">机芯序号:</view>
+              <view class="item-value">{{reportDetail.detail.jxOrder}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='item-li'>
+          <view class='item-title' data-index="3" bindtap='showHide'>
+            功能
+          </view>
+          <view class='item-content' wx:if="{{active == 3}}">
+            <view class="item-group">
+              <view class="group-title">主要功能:</view>
+              <view class="item-value">主要功能</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">其他功能:</view>
+              <view class="item-value">其他功能</view>
+            </view>
+          </view>
+        </view>
+        <view class='item-li'>
+          <view class='item-title' data-index="4" bindtap='showHide'>
+            外观宝石镶嵌
+          </view>
+          <view class='item-content' wx:if="{{active == 4}}">
+            <view class="item-group">
+              <view class="group-title">表壳:</view>
+              <view class="item-value">{{reportDetail.detail.bsBke}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表盘:</view>
+              <view class="item-value">{{reportDetail.detail.bsBp}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表扣:</view>
+              <view class="item-value">{{reportDetail.detail.bsBkou}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表带:</view>
+              <view class="item-value">{{reportDetail.detail.bsBd}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表冠:</view>
+              <view class="item-value">{{reportDetail.detail.bsBg}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表针:</view>
+              <view class="item-value">{{reportDetail.detail.bsBz}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='item-li'>
+          <view class='item-title' data-index="5" bindtap='showHide'>
+            工艺
+          </view>
+          <view class='item-content' wx:if="{{active == 5}}">
+            <view class="item-group">
+              <view class="group-title">机芯打磨:</view>
+              <view class="item-value">{{reportDetail.detail.jxDm}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">机芯零件倒角:</view>
+              <view class="item-value">{{reportDetail.detail.jxJxljdj}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">贵金属夹板:</view>
+              <view class="item-value">{{reportDetail.detail.jxGjsjb}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">贵金属自动陀:</view>
+              <view class="item-value">{{reportDetail.detail.jxGjszdt}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">夹板雕刻纹饰:</view>
+              <view class="item-value">{{reportDetail.detail.jxJbdkws}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">硅游丝:</view>
+              <view class="item-value">{{reportDetail.detail.jxGys}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">蓝钢游丝:</view>
+              <view class="item-value">{{reportDetail.detail.jxLgys}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">无卡度游丝:</view>
+              <view class="item-value">{{reportDetail.detail.jxWkdys}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">微调砝码:</view>
+              <view class="item-value">{{reportDetail.detail.jxBlwtfm}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">快慢针（调节器）:</view>
+              <view class="item-value">{{reportDetail.detail.jxKmztjq}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">金属固机圈:</view>
+              <view class="item-value">{{reportDetail.detail.jxJsgjq}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">塑料固机圈:</view>
+              <view class="item-value">{{reportDetail.detail.jxSlgjq}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="no-data">
+    <image class="no-data-pic" src="/images/no-data.png"></image>
+    <view class="no-data-title">暂无数据</view>
+  </view>
+</view>

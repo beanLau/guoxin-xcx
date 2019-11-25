@@ -1,0 +1,37 @@
+<view class='page-content'>
+  <image class="top-pic" src="/images/top.jpg"></image>
+  <view class="grid-wrap">
+    <!-- <view class="grid-row">
+      <view class="brid-item">
+        <view class="btn-item" bindtap="saomaCb">
+          <image class="btn-pic"  src="/images/saoma.png"></image>
+          <view class="btn-name">扫码查询</view>
+        </view>
+      </view>
+      <view class="brid-item">
+        <view class="btn-item2" bindtap="ershouCb">
+          <image class="btn-pic2"  src="/images/search.png"></image>
+          <view class="btn-name">二手表查询</view>
+        </view>
+        <view class="btn-item2" bindtap="sifaCb">
+          <image class="btn-pic2"  src="/images/search.png"></image>
+          <view class="btn-name">司法鉴定查询</view>
+        </view>
+      </view>
+    </view> -->
+    <view class="grid-row">
+      <view class="brid-item">
+        <view class="btn-item" bindtap="saomaCb">
+          <image class="btn-pic"  src="/images/saoma.png"></image>
+          <view class="btn-name">扫码查询</view>
+        </view>
+      </view>
+      <view class="brid-item">
+        <view class="btn-item" bindtap="baoxiuCb">
+          <image class="btn-pic"  src="/images/search.png"></image>
+          <view class="btn-name">样品编号查询</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
