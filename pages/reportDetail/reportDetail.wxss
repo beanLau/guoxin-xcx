@@ -72,6 +72,8 @@
 }
 .item-value{
   flex-grow: 1;
+  line-height: 80rpx;
+  color: #333;
 }
 
 .item-li .item-content {

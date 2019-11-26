@@ -12,7 +12,7 @@ App({
   },
   onShow(options) { //默认先拉取一下用户信息
     this.login(() => {
-    }, true)
+    }, true, true)
   },
   onHide: function() {
     this.globalData.showContinuePlay = true;
@@ -23,8 +23,8 @@ App({
     promiseQueue: [],
     promiseQueueKey: 0,
     userInfo: {
-      token: "897as7fs9d7fs",
-      nick: "哈哈"
+      token: "",
+      nick: ""
     },
     apiUrl: 'http://39.105.127.212:8080/jeecg-boot/', //正式地址
   },
@@ -47,7 +47,7 @@ App({
         success: function(res) { //返回取得的数据
           let promiseQueue = that.globalData.promiseQueue;
           that.globalData.canGetContinuePlay = true;
-          if (res.code == '0' || throwError) {
+          if (res.data.code == '0' || throwError) {
             if (requestObj.resolve) { //如果是promise队列中的请求。
               requestObj.resolve(res);
               let promiseQueueItem = promiseQueue.shift();
@@ -66,7 +66,7 @@ App({
             } else {
               resolve(res);
             }
-          } else if (res.code == '600000' || res.code == '700000') { //token失效，重新调用login换取token
+          } else if (res.data.code == '600000' || res.data.code == '700000') { //token失效，重新调用login换取token
             requestObj.resolve = resolve;
             promiseQueue.push(requestObj); //请求失败了，把该请求放到promise队列，等待更新token后重新调用。
             if (!that.globalData.needBeginLogin) { //如果不需要重新登录
@@ -81,11 +81,11 @@ App({
                 that.http(promiseQueueItem);
                 that.globalData.promiseQueue = promiseQueue;
               }
-            }, true)
-          } else if (res.code == '800000') { //同一个接口并行调用了。
+            }, true, throwError)
+          } else if (res.data.code == '800000') { //同一个接口并行调用了。
             wx.hideLoading();
             wx.showToast({
-              title: res.message,
+              title: res.data.message || "网络异常",
               icon: 'none',
               duration: 2000
             })
@@ -93,7 +93,7 @@ App({
             wx.hideLoading()
             wx.showModal({
               title: '提示',
-              content: res.message
+              content: res.data.message || "网络异常"
             })
           }
         },
@@ -110,7 +110,7 @@ App({
    * successCb 获取用户信息成功回调
    * cantCheck :如果该值为true，不执行验证用户是否绑定手机号方法。(可以认为是更细用户信息的)
    */
-  login: function(successCb, cantCheck) {
+  login: function (successCb, cantCheck, throwError) {
     let that = this;
     wx.login({
       success: function(res) {
@@ -125,9 +125,9 @@ App({
           title: '努力加载中...',
         })
         that.globalData.userInfo
-        that.http(requestObj).then((res) => {
+        that.http(requestObj, throwError).then((res) => {
           let resData = res.data.data;
-          if (res.code == "0") { // 成功获取useInfo保存起来。
+          if (res.data.code == "0") { // 成功获取useInfo保存起来。
             that.globalData.userInfo = resData;
             if (!cantCheck) {
               that.checkUserLogin(successCb);
@@ -137,11 +137,14 @@ App({
             //}
           } else {
             wx.hideLoading()
-            wx.showModal({
-              title: '提示',
-              content: res.data.errMsg || '网络错误！',
-              showCancel: false
-            })
+            if (!throwError){
+              wx.showModal({
+                title: '提示',
+                content: res.data.errMsg || '网络错误！',
+                showCancel: false
+              })
+            }
+            
           }
 
         }).catch((errMsg) => {
@@ -156,7 +159,7 @@ App({
   checkUserAuthorize: function(cb){
     if (!this.globalData.userInfo.nick) {
       wx.navigateTo({
-        url: '/authorize/authorize',
+        url: '/pages/authorize/authorize',
       })
     }else{
       cb && cb()

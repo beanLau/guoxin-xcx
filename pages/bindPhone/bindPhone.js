@@ -92,33 +92,23 @@ Page({
       url: 'menhu/login/wx/getByCode',
       data: httpData
     }).then(function (res) {
-      if (res.code != 0) {
+      if (res.data.code != 0) {
         wx.showToast({
-          title: res.message || "网络异常，稍后再试",
+          title: res.data.message || "网络异常，稍后再试",
         })
         return
       }
       wx.showToast({
-        title: '绑定成功！',
+        title: '登录成功！',
       })
-      if (res.data && res.data.data) {
-        app.globalData.userInfo = res.data.data;
+      if (res.data && res.data.result) {
+        app.globalData.userInfo = res.data.result;
       }
       wx.hideLoading()
       setTimeout(() => { //先提示用户信息，1.5秒后嗲用公共的login方法，更新用户数据
         app.login(() => {
           if (app.globalData.cbUrl) { //判断cburl跳转到对应页面
-            if (app.globalData.cbUrl.indexOf('pages/index/index') != -1 || app.globalData.cbUrl.indexOf('pages/study/study') != -1) {
-              wx.switchTab({
-                url: '/' + app.globalData.cbUrl,
-                success: function (e) {
-                  var page = getCurrentPages().pop();
-                  if (page == undefined || page == null) return;
-                  page.onLoad();
-                  app.globalData.loginedCb && app.globalData.loginedCb()
-                }
-              })
-            } else if (app.globalData.cbUrl.indexOf('pages/my/my') != -1) {
+            if (app.globalData.cbUrl.indexOf('pages/index/index') != -1) {
               wx.switchTab({
                 url: '/' + app.globalData.cbUrl,
                 success: function (e) {
@@ -204,9 +194,9 @@ Page({
         mobile: that.data.phoneValue
       }
     }).then(function (res) {
-      if (res.code != 0) {
+      if (res.data.code != 0) {
         wx.showToast({
-          title: res.msg,
+          title: res.data.msg,
           icon: 'none'
         })
         return

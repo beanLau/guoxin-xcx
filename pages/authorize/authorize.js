@@ -14,58 +14,57 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.setData(options)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  },
+  onShow: function() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
-  getWxUserInfo: function (res) {
+  getWxUserInfo: function(res) {
     let rawData
     if (res.detail) { //用户点击按钮触发。
       rawData = res.detail.rawData || ''
@@ -79,14 +78,35 @@ Page({
       })
     } else {
       app.globalData.authorizeData = res.detail;
-      if(this.data.needLogin == 1){ //如果是需要绑定手机号
+      if (this.data.needLogin == 1) { //如果是需要绑定手机号
         wx.navigateTo({
           url: '../bindPhone/bindPhone',
         })
+      } else {
+        let that = this;
+        let authorizeData = app.globalData.authorizeData
+        let httpData = {
+          "avatarUrl": authorizeData.userInfo.avatarUrl,
+          "gender": authorizeData.userInfo.gender,
+          "nickName": authorizeData.userInfo.nickName
+        }
+        app.http({
+          url: 'menhu/login/wx/getByCode',
+          data: httpData
+        }).then(function(res) {
+          if (res.data.code = 0) {
+            wx.showToast({
+              title: '绑定成功！',
+            })
+            if (res.data && res.data.data) {
+              app.globalData.userInfo = res.data.result;
+            }
+            wx.redirectTo({
+              url: '../index/index',
+            })
+          }
+        })
       }
-      wx.redirectTo({
-        url: '../index/index',
-      })
     }
   }
 })
