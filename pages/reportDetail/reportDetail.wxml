@@ -43,7 +43,7 @@
             </view>
             <view class="item-group">
               <view class="group-title">结论:</view>
-              <view class="item-value">结论</view>
+              <view class="item-value">{{reportDetail.detail.checkResult}}</view>
             </view>
           </view>
         </view>
@@ -120,11 +120,11 @@
           <view class='item-content' wx:if="{{active == 3}}">
             <view class="item-group">
               <view class="group-title">主要功能:</view>
-              <view class="item-value">主要功能</view>
+              <view class="item-value">{{reportDetail.detail.mainAbility}}</view>
             </view>
             <view class="item-group">
               <view class="group-title">其他功能:</view>
-              <view class="item-value">其他功能</view>
+              <view class="item-value">{{reportDetail.detail.jxQtgn}}</view>
             </view>
           </view>
         </view>
