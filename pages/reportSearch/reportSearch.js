@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    searchValue: "冀SD191124EC(2)"
+    searchValue: ""
   },
 
   /**

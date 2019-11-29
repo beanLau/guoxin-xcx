@@ -83,10 +83,8 @@ Page({
           })
           return
         }else{
-          app.checkUserLogin(() => {
-            wx.navigateTo({
-              url: `../reportDetail/reportDetail?id=${res.data}`,
-            })
+          wx.navigateTo({
+            url: `../reportDetail/reportDetail?id=${res.data}`,
           })
         }
       }
@@ -107,17 +105,13 @@ Page({
     })
   },
   guojianCb(){
-    app.checkUserAuthorize(() => {
-      wx.navigateTo({
-        url: `../reportSearch/reportSearch?type=3`,
-      })
+    wx.navigateTo({
+      url: `../reportSearch/reportSearch?type=3`,
     })
   },
   baoxiuCb(){
-    app.checkUserAuthorize(() => {
-      wx.navigateTo({
-        url: `../reportSearch/reportSearch?type=4`,
-      })
+    wx.navigateTo({
+      url: `../reportSearch/reportSearch?type=4`,
     })
   }
 })

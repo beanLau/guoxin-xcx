@@ -79,30 +79,28 @@ Page({
    */
   bindPhone: function (e) {
     let that = this;
-    let authorizeData = app.globalData.authorizeData
     let httpData = {
-      "avatarUrl": authorizeData.userInfo.avatarUrl,
       "captcha": this.data.valiDateCode,
-      "gender": authorizeData.userInfo.gender,
       "loginName": this.data.phoneValue,
-      "nickName": authorizeData.userInfo.nickName,
       "password": this.data.checkCode
     }
     app.http({
       url: 'menhu/login/wx/getByCode',
       data: httpData
     }).then(function (res) {
-      if (res.data.code != 0) {
+      if (res.code != 200) {
         wx.showToast({
-          title: res.data.message || "网络异常，稍后再试",
+          title: res.message || "网络异常，稍后再试",
         })
         return
       }
       wx.showToast({
         title: '登录成功！',
       })
-      if (res.data && res.data.result) {
-        app.globalData.userInfo = res.data.result;
+      if (res.result && res.result.token) {
+        app.globalData.userInfo = {
+          token: res.result.token
+        };
       }
       wx.hideLoading()
       setTimeout(() => { //先提示用户信息，1.5秒后嗲用公共的login方法，更新用户数据

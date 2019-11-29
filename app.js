@@ -11,8 +11,7 @@ App({
     // })
   },
   onShow(options) { //默认先拉取一下用户信息
-    this.login(() => {
-    }, true, true)
+    
   },
   onHide: function() {
     this.globalData.showContinuePlay = true;
@@ -23,8 +22,7 @@ App({
     promiseQueue: [],
     promiseQueueKey: 0,
     userInfo: {
-      token: "",
-      nick: ""
+      token: ""
     },
     apiUrl: 'http://39.105.127.212:8080/jeecg-boot/', //正式地址
   },
@@ -177,27 +175,14 @@ App({
     })
     if (that.globalData.userInfo.token) { //如果已获取用户token
       wx.hideLoading()
-      if (that.globalData.isRefuseAuthor) { //如果用户已拒绝授权
-        wx.showModal({
-          title: '提示',
-          content: '拒绝获取用户信息权限，您将无法获取完整用户体验，可通过我的-->权限设置进行授权。',
-          confirmText: '知道了',
-          showCancel: false
-        })
-      } else {
-        if (that.globalData.userInfo.state == 1) { //如果用户已绑定手机号
-          that.globalData.cbUrl = ''
-          successCb();
-        } else { //跳转到登录页面，登录成功后需要继续执行回调
-          that.globalData.cbUrl = utils.getCurrentPageUrlWithArgs() //设置全局url，回来后再执行回调。
-          that.globalData.loginedCb = successCb;
-          wx.navigateTo({
-            url: '/pages/authorize/authorize?needLogin=1', //needLogin=1表示需要登陆
-          })
-        }
-      }
+      that.globalData.cbUrl = ''
+      successCb();
     } else { //去获取用户openid
-      that.login(successCb);
+      that.globalData.cbUrl = utils.getCurrentPageUrlWithArgs() //设置全局url，回来后再执行回调。
+      that.globalData.loginedCb = successCb;
+      wx.navigateTo({
+        url: '/pages/bindPhone/bindPhone', //needLogin=1表示需要登陆
+      })
     }
   },
   /**
