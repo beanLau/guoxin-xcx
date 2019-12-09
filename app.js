@@ -35,13 +35,15 @@ App({
     let that = this;
     return new Promise((resolve, reject) => {
       //网络请求
+      let url = that.globalData.apiUrl + requestObj.url;
+      console.log(url)
       wx.request({
-        url: that.globalData.apiUrl + requestObj.url,
+        url: url,
         method: requestObj.method || "POST",
         header: {
           token: that.globalData.userInfo.token || ""
         },
-        data: requestObj.data,
+        data: requestObj.data || {},
         success: function(res) { //返回取得的数据
           let promiseQueue = that.globalData.promiseQueue;
           that.globalData.canGetContinuePlay = true;
@@ -113,7 +115,7 @@ App({
     wx.login({
       success: function(res) {
         let requestObj = {
-          url: "menhu/login/wx/getByCode",
+          url: "/menhu/login/wx/getByCode",
           method: 'post',
           data: {
             code: res.code

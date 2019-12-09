@@ -5,7 +5,7 @@ Page({
    */
   data: {
     information: "",
-    imgCode: `http://39.105.127.212:8080/jeecg-boot/menhu/login/captcha?v=${Date.now()}`,
+    imgCode: `https://server.hgstc.com/menhu/login/captcha?v=${Date.now()}`,
     phoneMessage: "获取短信验证码",
     phoneCode: {
       isshow: false,

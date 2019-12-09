@@ -72,7 +72,7 @@ Page({
   },
   getDetail(){
     app.http({
-      method: "get",
+      method: "GET",
       url: `menhu/mhReport/getBySampleCode?code=${this.data.id}`
     })
       .then(res => {
