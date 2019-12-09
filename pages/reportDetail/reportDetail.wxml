@@ -1,7 +1,7 @@
 <view class="page-content">
   <image class="top-pic" src="/images/logo.png"></image>
   <view wx:if="{{reportDetail}}" class="detail-content">
-    <image class="zmz-pic" src="{{reportDetail.detail.zmz}}"> </image>
+    <image class="zmz-pic" src="{{'https://server.hgstc.com/' + reportDetail.detail.zmz}}"> </image>
     <view class='container'>
       <view class='container-wrap'>
         <view class='item-li'>
@@ -11,7 +11,7 @@
           <view class='item-content' wx:if="{{active == 0}}">
             <view class="item-group">
               <view class="group-title">样品编号:</view>
-              <view class="item-value">{{reportDetail.detail.sampleCode}}</view>
+              <view class="item-value">{{reportDetail.detail.sampleCode || id}}</view>
             </view>
             <view class="item-group">
               <view class="group-title">鉴定日期:</view>
@@ -53,7 +53,7 @@
           </view>
           <view class='item-content' wx:if="{{active == 1}}">
             <view class="item-group">
-              <view class="group-title">瞬时日差（s/d）:</view>
+              <view class="group-title group-title2">瞬时日差（s/d）:</view>
               <view class="item-value">{{reportDetail.detail.ssrc}}</view>
             </view>
             <view class="item-group">
@@ -65,7 +65,7 @@
               <view class="item-value">{{reportDetail.detail.jxZp}}</view>
             </view>
             <view class="item-group">
-              <view class="group-title">机芯宝石数:</view>
+              <view class="group-title group-title2">机芯宝石数:</view>
               <view class="item-value">{{reportDetail.detail.jxBss}}</view>
             </view>
           </view>
@@ -119,11 +119,11 @@
           </view>
           <view class='item-content' wx:if="{{active == 3}}">
             <view class="item-group">
-              <view class="group-title">主要功能:</view>
+              <view class="group-title group-title2">主要功能:</view>
               <view class="item-value">{{reportDetail.detail.mainAbility}}</view>
             </view>
             <view class="item-group">
-              <view class="group-title">其他功能:</view>
+              <view class="group-title group-title2">其他功能:</view>
               <view class="item-value">{{reportDetail.detail.jxQtgn}}</view>
             </view>
           </view>
@@ -165,51 +165,51 @@
           </view>
           <view class='item-content' wx:if="{{active == 5}}">
             <view class="item-group">
-              <view class="group-title">机芯打磨:</view>
+              <view class="group-title group-title2">机芯打磨:</view>
               <view class="item-value">{{reportDetail.detail.jxDm}}</view>
             </view>
             <view class="item-group">
-              <view class="group-title">机芯零件倒角:</view>
+              <view class="group-title group-title2">机芯零件倒角:</view>
               <view class="item-value">{{reportDetail.detail.jxJxljdj}}</view>
             </view>
             <view class="item-group">
-              <view class="group-title">贵金属夹板:</view>
+              <view class="group-title group-title2">贵金属夹板:</view>
               <view class="item-value">{{reportDetail.detail.jxGjsjb}}</view>
             </view>
             <view class="item-group">
-              <view class="group-title">贵金属自动陀:</view>
+              <view class="group-title group-title2">贵金属自动陀:</view>
               <view class="item-value">{{reportDetail.detail.jxGjszdt}}</view>
             </view>
             <view class="item-group">
-              <view class="group-title">夹板雕刻纹饰:</view>
+              <view class="group-title group-title2">夹板雕刻纹饰:</view>
               <view class="item-value">{{reportDetail.detail.jxJbdkws}}</view>
             </view>
             <view class="item-group">
-              <view class="group-title">硅游丝:</view>
+              <view class="group-title group-title2">硅游丝:</view>
               <view class="item-value">{{reportDetail.detail.jxGys}}</view>
             </view>
             <view class="item-group">
-              <view class="group-title">蓝钢游丝:</view>
+              <view class="group-title group-title2">蓝钢游丝:</view>
               <view class="item-value">{{reportDetail.detail.jxLgys}}</view>
             </view>
             <view class="item-group">
-              <view class="group-title">无卡度游丝:</view>
+              <view class="group-title group-title2">无卡度游丝:</view>
               <view class="item-value">{{reportDetail.detail.jxWkdys}}</view>
             </view>
             <view class="item-group">
-              <view class="group-title">微调砝码:</view>
+              <view class="group-title group-title2">微调砝码:</view>
               <view class="item-value">{{reportDetail.detail.jxBlwtfm}}</view>
             </view>
             <view class="item-group">
-              <view class="group-title">快慢针（调节器）:</view>
+              <view class="group-title group-title2">快慢针（调节器）:</view>
               <view class="item-value">{{reportDetail.detail.jxKmztjq}}</view>
             </view>
             <view class="item-group">
-              <view class="group-title">金属固机圈:</view>
+              <view class="group-title group-title2">金属固机圈:</view>
               <view class="item-value">{{reportDetail.detail.jxJsgjq}}</view>
             </view>
             <view class="item-group">
-              <view class="group-title">塑料固机圈:</view>
+              <view class="group-title group-title2">塑料固机圈:</view>
               <view class="item-value">{{reportDetail.detail.jxSlgjq}}</view>
             </view>
           </view>

@@ -69,6 +69,19 @@ Page({
     wx.scanCode({
       success(res) {
         let id = res.result;
+        let query = ""
+        if(id.indexOf("http") == 0){
+          try {
+            query = decodeURIComponent(id).split("?")[1];
+            id = query.split("=")[1];
+            id = decodeURI(id)
+          } catch (error) {
+            wx.showToast({
+              icon: "none",
+              title: '数据解析失败',
+            })
+          }
+        }
         if(!id){
           wx.showToast({
             icon: "none",

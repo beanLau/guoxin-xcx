@@ -102,31 +102,19 @@ Page({
           token: res.result.token
         };
       }
-      wx.hideLoading()
       setTimeout(() => { //先提示用户信息，1.5秒后嗲用公共的login方法，更新用户数据
+        wx.hideLoading()
         if (app.globalData.cbUrl) { //判断cburl跳转到对应页面
-          if (app.globalData.cbUrl.indexOf('pages/index/index') != -1) {
-            wx.switchTab({
-              url: '/' + app.globalData.cbUrl,
-              success: function(e) {
-                var page = getCurrentPages().pop();
-                if (page == undefined || page == null) return;
-                page.onLoad();
-                app.globalData.loginedCb && app.globalData.loginedCb()
-              }
-            })
-          } else {
-            wx.navigateTo({
-              url: '/' + app.globalData.cbUrl,
-              success: function(e) {
-                var page = getCurrentPages().pop();
-                if (page == undefined || page == null) return;
-                app.globalData.loginedCb && app.globalData.loginedCb()
-              }
-            })
-          }
+          wx.redirectTo({
+            url: "/" + app.globalData.cbUrl,
+            success: function (e) {
+              var page = getCurrentPages().pop();
+              if (page == undefined || page == null) return;
+              page.onLoad();
+            }
+          })
         } else {
-          wx.switchTab({
+          wx.redirectTo({
             url: '/pages/index/index',
             success: function(e) {
               var page = getCurrentPages().pop();

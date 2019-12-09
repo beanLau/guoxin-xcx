@@ -62,7 +62,7 @@
   font-weight: 500;
   color: #2F7AF1;
 }
-.group-title{
+.group-title,.group-title2{
   width: 160rpx;
   padding-left: 20rpx;
   box-sizing: border-box;
@@ -70,10 +70,14 @@
   line-height: 80rpx;
   border-bottom: 1px dashed #f1f1f1;
 }
+.group-title2{
+  width: 240rpx;
+}
 .item-value{
   flex-grow: 1;
   line-height: 80rpx;
   color: #333;
+  max-width: 800rpx;
 }
 
 .item-li .item-content {

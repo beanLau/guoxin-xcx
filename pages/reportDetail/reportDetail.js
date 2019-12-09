@@ -13,8 +13,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let query = options.q || "";
+    let id = ""
+    if (query){
+      try {
+        query = decodeURIComponent(query).split("?")[1];
+        id = query.split("=")[1];
+        id = decodeURI(id)
+        this.setData({ id: id })
+      } catch (error) {
+        wx.showToast({
+          icon: "none",
+          title: '数据解析失败',
+        })
+      }
+    }
     this.setData(options)
-    this.getDetail()
+    if (this.data.id.toUpperCase().indexOf("CZ") != -1) {
+      app.checkUserLogin(() => {
+        this.getDetail()
+      })
+      return
+    }else{
+      this.getDetail()
+    }
   },
 
   /**
@@ -71,6 +93,9 @@ Page({
     })
   },
   getDetail(){
+    if (!this.data.id){
+      return
+    }
     app.http({
       method: "GET",
       url: `menhu/mhReport/getBySampleCode?code=${this.data.id}`
