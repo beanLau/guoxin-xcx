@@ -19,7 +19,7 @@
 
 .top-pic {
   width: 100%;
-  height: 400rpx;
+  height: 150rpx;
 }
 .zmz-pic{
   width: 100%;

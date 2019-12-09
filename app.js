@@ -24,7 +24,7 @@ App({
     userInfo: {
       token: ""
     },
-    apiUrl: 'http://39.105.127.212:8080/jeecg-boot/', //正式地址
+    apiUrl: 'https://server.hgstc.com/', //正式地址
   },
   /**
    * 封装的promise
