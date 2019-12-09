@@ -76,14 +76,14 @@ Page({
       url: `menhu/mhReport/getBySampleCode?code=${this.data.id}`
     })
       .then(res => {
-        if (res.data.code == 0){
+        if (res.code == 0){
           this.setData({
-            reportDetail: res.data.result
+            reportDetail: res.result
           })
         }else{
           wx.showToast({
             icon: 'none',
-            title: res.data.message,
+            title: res.message,
           })
         }
       })

@@ -68,23 +68,22 @@ Page({
   saomaCb(){ //扫码
     wx.scanCode({
       success(res) {
-        console.log(res)
-        if(!res.data){
+        if(!res.result){
           wx.showToast({
             icon: "none",
             title: '数据解析失败',
           })
         }
-        if (res.data.toUpperCase().indexOf("CZ") == 0) {
+        if (res.result.toUpperCase().indexOf("CZ") == 0) {
           app.checkUserLogin(() => {
             wx.navigateTo({
-              url: `../reportDetail/reportDetail?id=${res.data}`,
+              url: `../reportDetail/reportDetail?id=${res.result}`,
             })
           })
           return
         }else{
           wx.navigateTo({
-            url: `../reportDetail/reportDetail?id=${res.data}`,
+            url: `../reportDetail/reportDetail?id=${res.result}`,
           })
         }
       }

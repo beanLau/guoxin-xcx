@@ -45,7 +45,7 @@ App({
         success: function(res) { //返回取得的数据
           let promiseQueue = that.globalData.promiseQueue;
           that.globalData.canGetContinuePlay = true;
-          if (res.data.code == '0' || throwError) {
+          if (res.data.code == '0' || res.data.code == '200' || throwError) {
             if (requestObj.resolve) { //如果是promise队列中的请求。
               requestObj.resolve(res);
               let promiseQueueItem = promiseQueue.shift();
@@ -62,7 +62,7 @@ App({
                 }
               }
             } else {
-              resolve(res);
+              resolve(res.data);
             }
           } else if (res.data.code == '600000' || res.data.code == '700000') { //token失效，重新调用login换取token
             requestObj.resolve = resolve;
