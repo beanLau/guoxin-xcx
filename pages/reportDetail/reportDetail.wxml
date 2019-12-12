@@ -3,7 +3,7 @@
   <view wx:if="{{reportDetail}}" class="detail-content">
     <image class="zmz-pic" src="{{'https://server.hgstc.com/' + reportDetail.detail.zmz}}"> </image>
     <view class='container'>
-      <view class='container-wrap'>
+      <view class='container-wrap' wx-if="!isSf">
         <view class='item-li'>
           <view class='item-title' data-index="0" bindtap='showHide'>
             样品概况
@@ -214,6 +214,49 @@
             </view>
           </view>
         </view>
+      </view>
+      <view class='container-wrap' wx-else>
+        <view class='item-title' data-index="0" bindtap='showHide'>
+            鉴定报告
+          </view>
+          <view class='item-content'>
+            <view class="item-group">
+              <view class="group-title">序列号:</view>
+              <view class="item-value">{{reportDetail.detail.sampleCode || id}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">品牌名称:</view>
+              <view class="item-value">{{reportDetail.detail.brandName}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">机芯型号:</view>
+              <view class="item-value">{{reportDetail.detail.jxStyle}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">机芯序号:</view>
+              <view class="item-value">{{reportDetail.detail.jxOrder}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表壳号:</view>
+              <view class="item-value">{{reportDetail.detail.bkeCode}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表壳序号:</view>
+              <view class="item-value">{{reportDetail.detail.bkeOrder}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">表盖号:</view>
+              <view class="item-value">{{reportDetail.detail.bkeCovercode}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">结论:</view>
+              <view class="item-value">{{reportDetail.detail.checkResult}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">市场参考价:</view>
+              <view class="item-value">{{reportDetail.detail.qtCkpgjg}}</view>
+            </view>
+          </view>
       </view>
     </view>
   </view>

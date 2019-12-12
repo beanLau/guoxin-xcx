@@ -6,7 +6,8 @@ Page({
    */
   data: {
     reportDetail: null,
-    active: 0
+    active: 0,
+    isSf: false
   },
 
   /**
@@ -29,7 +30,10 @@ Page({
       }
     }
     this.setData(options)
-    if (this.data.id.toUpperCase().indexOf("CZ") != -1) {
+    if (this.data.id.toUpperCase().indexOf("CZ") == 0) {
+      this.setData({
+        isSf: true
+      })
       app.checkUserLogin(() => {
         this.getDetail()
       })

@@ -127,6 +127,7 @@ App({
         that.globalData.userInfo
         that.http(requestObj, throwError).then((res) => {
           let resData = res.data.data;
+          wx.hideLoading()
           if (res.data.code == "0") { // 成功获取useInfo保存起来。
             that.globalData.userInfo = resData;
             if (!cantCheck) {
@@ -182,6 +183,7 @@ App({
     } else { //去获取用户openid
       that.globalData.cbUrl = utils.getCurrentPageUrlWithArgs() //设置全局url，回来后再执行回调。
       that.globalData.loginedCb = successCb;
+      wx.hideLoading()
       wx.navigateTo({
         url: '/pages/bindPhone/bindPhone', //needLogin=1表示需要登陆
       })
