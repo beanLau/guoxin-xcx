@@ -19,7 +19,7 @@
 
 .top-pic {
   width: 100%;
-  height: 150rpx;
+  height: 100rpx;
 }
 .zmz-pic{
   width: 100%;
@@ -62,8 +62,8 @@
   font-weight: 500;
   color: #2F7AF1;
 }
-.group-title,.group-title2{
-  width: 160rpx;
+.group-title{
+  width: 240rpx;
   padding-left: 20rpx;
   box-sizing: border-box;
   height: 80rpx;

@@ -7,7 +7,8 @@ Page({
   data: {
     reportDetail: null,
     active: 0,
-    isSf: false
+    isSf: false,
+    isBxk: false
   },
 
   /**
@@ -39,6 +40,12 @@ Page({
       })
       return
     }else{
+      let id = this.data.id.toUpperCase()
+      if(id.indexOf("GJ") == 0){
+        this.setData({
+          isBxk: true
+        })
+      }
       this.getDetail()
     }
   },
@@ -100,9 +107,14 @@ Page({
     if (!this.data.id){
       return
     }
+    let id = this.data.id.toUpperCase()
+    let url = `menhu/mhReport/getBySampleCode?code=${id}`
+    if(this.data.isBxk){
+      url = `menhu/mhReport/getRepairByShibeiCode?code=${id}`
+    }
     app.http({
       method: "GET",
-      url: `menhu/mhReport/getBySampleCode?code=${this.data.id}`
+      url: url
     })
       .then(res => {
         if (res.code == 0){

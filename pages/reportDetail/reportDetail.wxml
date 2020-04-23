@@ -1,8 +1,50 @@
 <view class="page-content">
   <image class="top-pic" src="/images/logo.png"></image>
   <view wx:if="{{reportDetail}}" class="detail-content">
-    <image class="zmz-pic" src="{{'https://server.hgstc.com/' + reportDetail.detail.zmz}}"> </image>
-    <view class='container'>
+    <image class="zmz-pic" wx:if="{{!isBxk}}" src="{{'https://server.hgstc.com/' + reportDetail.detail.zmz}}"> </image>
+    <view class='container' wx:if="{{isBxk}}">
+      <view class='container-wrap'>
+        <view class='item-li'>
+          <view class='item-title' data-index="0" bindtap='showHide'>
+            样品概况
+          </view>
+          <view class='item-content' wx:if="{{active == 0}}">
+            <view class="item-group">
+              <view class="group-title">系统识别号:</view>
+              <view class="item-value">{{reportDetail.shibieCode || id}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">维修时间:</view>
+              <view class="item-value">{{reportDetail.repairEndDate}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">品牌名称:</view>
+              <view class="item-value">{{reportDetail.brandName}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='item-li'>
+          <view class='item-title' data-index="1" bindtap='showHide'>
+            技术信息
+          </view>
+          <view class='item-content' wx:if="{{active == 1}}">
+            <view class="item-group">
+              <view class="group-title">表壳序号:</view>
+              <view class="item-value">{{reportDetail.bkeOrder}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">机芯型号:</view>
+              <view class="item-value">{{reportDetail.jixinStyle}}</view>
+            </view>
+            <view class="item-group">
+              <view class="group-title">机芯序号:</view>
+              <view class="item-value">{{reportDetail.jxorder}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='container' wx:else>
       <view class='container-wrap' wx-if="!isSf">
         <view class='item-li'>
           <view class='item-title' data-index="0" bindtap='showHide'>
