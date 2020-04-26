@@ -32,6 +32,18 @@
           <view class="btn-name">样品编号查询</view>
         </view>
       </view>
+      <view class="brid-item">
+        <view class="btn-item" bindtap="saomaCb">
+          <image class="btn-pic"  src="/images/saoma.png"></image>
+          <view class="btn-name">扫码查询维保卡</view>
+        </view>
+      </view>
+      <view class="brid-item">
+        <view class="btn-item" bindtap="baoxiuCb">
+          <image class="btn-pic"  src="/images/search.png"></image>
+          <view class="btn-name">维保卡查询</view>
+        </view>
+      </view>
     </view>
   </view>
 </view>
