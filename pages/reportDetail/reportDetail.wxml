@@ -8,7 +8,13 @@
           <view class='item-title' data-index="0" bindtap='showHide'>
             样品概况
           </view>
-          <view class='item-content' wx:if="{{active == 0}}">
+          <view class='item-content'>
+            <view class="item-group">
+              <view class="group-title">照片:</view>
+              <view class="item-value">
+                <image src="{{'https://server.hgstc.com/' + reportDetail.hz1}}"> </image>
+              </view>
+            </view>
             <view class="item-group">
               <view class="group-title">系统识别号:</view>
               <view class="item-value">{{reportDetail.shibieCode || id}}</view>
@@ -21,13 +27,21 @@
               <view class="group-title">品牌名称:</view>
               <view class="item-value">{{reportDetail.brandName}}</view>
             </view>
+            <view class="item-group">
+              <view class="group-title">起保日期:</view>
+              <view class="item-value">{{reportDetail.repeatCheckDate}}</view>
+            </view>
           </view>
         </view>
         <view class='item-li'>
           <view class='item-title' data-index="1" bindtap='showHide'>
             技术信息
           </view>
-          <view class='item-content' wx:if="{{active == 1}}">
+          <view class='item-content'>
+            <view class="item-group">
+              <view class="group-title">表壳号:</view>
+              <view class="item-value">{{reportDetail.bkeCode}}</view>
+            </view>
             <view class="item-group">
               <view class="group-title">表壳序号:</view>
               <view class="item-value">{{reportDetail.bkeOrder}}</view>
