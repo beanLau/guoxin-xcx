@@ -1,7 +1,7 @@
 <view class="page-content">
-  <image class="top-pic" src="/images/logo.png"></image>
+  <image class="top-pic" mode="widthFix" src="/images/logo.png"></image>
   <view wx:if="{{reportDetail}}" class="detail-content">
-    <image class="zmz-pic" wx:if="{{!isBxk}}" src="{{'https://server.hgstc.com/' + reportDetail.detail.zmz}}"> </image>
+    <image class="zmz-pic" wx:if="{{!isBxk}}" mode="widthFix" src="{{'https://server.hgstc.com/' + reportDetail.detail.zmz}}"> </image>
     <view class='container' wx:if="{{isBxk}}">
       <view class='container-wrap'>
         <view class='item-li'>
@@ -12,16 +12,12 @@
             <view class="item-group">
               <view class="group-title">照片:</view>
               <view class="item-value">
-                <image src="{{'https://server.hgstc.com/' + reportDetail.hz1}}"> </image>
+                <image mode="widthFix" src="{{'https://server.hgstc.com/' + reportDetail.hz1}}"> </image>
               </view>
             </view>
             <view class="item-group">
               <view class="group-title">系统识别号:</view>
               <view class="item-value">{{reportDetail.shibieCode || id}}</view>
-            </view>
-            <view class="item-group">
-              <view class="group-title">维修时间:</view>
-              <view class="item-value">{{reportDetail.repairEndDate}}</view>
             </view>
             <view class="item-group">
               <view class="group-title">品牌名称:</view>
@@ -59,7 +55,7 @@
       </view>
     </view>
     <view class='container' wx:else>
-      <view class='container-wrap' wx-if="!isSf">
+      <view class='container-wrap' wx:if="!isSf">
         <view class='item-li'>
           <view class='item-title' data-index="0" bindtap='showHide'>
             样品概况
@@ -271,7 +267,7 @@
           </view>
         </view>
       </view>
-      <view class='container-wrap' wx-else>
+      <view class='container-wrap' wx:else>
         <view class='item-title' data-index="0" bindtap='showHide'>
             鉴定报告
           </view>
